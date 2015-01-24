@@ -104,7 +104,9 @@ public class PlayerController : MonoBehaviour
         Vector3 spawnLoc = transform.position + direction*scale*1.3f;
 
         GameObject bulletInstance = (GameObject)Instantiate(bullet, spawnLoc, Quaternion.identity);
-        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(direction.x, direction.y)*100));
+        // Should the bullet velocity be affected by the player's velocity?
+        //bulletInstance.rigidbody2D.velocity = rigidbody2D.velocity;
+        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(direction.x, direction.y)*500));
 	}
 }
  
