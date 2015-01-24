@@ -3,9 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-	/// <summary>
-	/// 1 - The speed of the ship
-	/// </summary>
+    public int playerID = 0;
+
     public float glideSpeed = 100;
     public float floatSpeed = 40;
 

@@ -4081,6 +4081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18741abba4f550499561464436d0f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   glideSpeed: 15
   floatSpeed: 40
 --- !u!212 &1106015204
@@ -4392,6 +4393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18741abba4f550499561464436d0f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   glideSpeed: 100
   floatSpeed: 2
 --- !u!212 &1203962246
