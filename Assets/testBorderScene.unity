@@ -2012,11 +2012,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11403856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
       propertyPath: speed.y
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11403856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
       propertyPath: floatSpeed
-      value: .5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 403856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
       propertyPath: m_LocalScale.x
@@ -2025,6 +2025,14 @@ Prefab:
     - target: {fileID: 403856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
       propertyPath: m_LocalScale.y
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
+      propertyPath: glideSpeed
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5881542, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
@@ -4073,8 +4081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18741abba4f550499561464436d0f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 100, y: 100}
-  floatSpeed: .5
+  glideSpeed: 15
+  floatSpeed: 40
 --- !u!212 &1106015204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4384,7 +4392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18741abba4f550499561464436d0f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 100, y: 100}
+  glideSpeed: 100
   floatSpeed: 2
 --- !u!212 &1203962246
 SpriteRenderer:

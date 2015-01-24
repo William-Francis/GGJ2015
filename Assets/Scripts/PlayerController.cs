@@ -6,9 +6,8 @@ public class PlayerController : MonoBehaviour
 	/// <summary>
 	/// 1 - The speed of the ship
 	/// </summary>
-	public Vector2 speed = new Vector2(2, 2);
-
-    public float floatSpeed = 2;
+    public float glideSpeed = 100;
+    public float floatSpeed = 40;
 
     private float scale;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
@@ -25,16 +24,13 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
-        // 4 - Movement per direction
-        Vector2 movement = new Vector2(speed.x * moveX / 10, 0*speed.y * moveY / 20);
-
         // 5 - Move the game object
         // We want scale of 1 to result in 0 upwards acceleration
         // Clamp scale to a positive value so we don't sink directly due to scale
-        float floatAcceleration = floatSpeed*Mathf.Max(0,(scale - neutralScale));
+        float floatAcceleration = floatSpeed*scale;
         Vector2 newVelocity = rigidbody2D.velocity;
-        newVelocity.x = movement.x;
-        newVelocity.y += floatAcceleration;
+        newVelocity.x = glideSpeed*moveX;
+        newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f;
         rigidbody2D.velocity = newVelocity;
 
         if (Input.GetKey(KeyCode.W))
