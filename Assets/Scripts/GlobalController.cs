@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GlobalController : MonoBehaviour {
 
 
 	public static int numberOfPlayers =1;
+	public static List<int> deathList  = new List<int>();
 	
 	public static void setNumberOfPlayers( int number)
 	{
