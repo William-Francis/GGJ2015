@@ -11,12 +11,12 @@ public class PlayerController : MonoBehaviour
     public float floatSpeed = 2;
 
     private float scale;
-    private float neutralScale; // Store the neutral scale to use as a zero-point for float acceleration
+    private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
     void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
-        neutralScale = scale;
+        //neutralScale = scale;
     }
 
 	void FixedUpdate()
@@ -26,13 +26,16 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxis("Vertical");
 
         // 4 - Movement per direction
-        Vector2 movement = new Vector2(speed.x * moveX / 10, speed.y * moveY / 20);
+        Vector2 movement = new Vector2(speed.x * moveX / 10, 0*speed.y * moveY / 20);
 
         // 5 - Move the game object
         // We want scale of 1 to result in 0 upwards acceleration
         // Clamp scale to a positive value so we don't sink directly due to scale
         float floatAcceleration = floatSpeed*Mathf.Max(0,(scale - neutralScale));
-        rigidbody2D.velocity = movement + new Vector2(0, floatAcceleration);
+        Vector2 newVelocity = rigidbody2D.velocity;
+        newVelocity.x = movement.x;
+        newVelocity.y += floatAcceleration;
+        rigidbody2D.velocity = newVelocity;
 
         if (Input.GetKey(KeyCode.W))
         {
