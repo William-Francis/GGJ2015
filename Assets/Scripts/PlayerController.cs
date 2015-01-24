@@ -1,4 +1,3 @@
- 
 using UnityEngine;
 using System.Collections;
 
@@ -99,8 +98,8 @@ public class PlayerController : MonoBehaviour
         aimIndicator.localRotation = Quaternion.Euler(0, 0, theta-90);
 
         // Shoot
-        if (shoot  )
-        {
+		if (shoot  && Time.time > nextFire)
+		{
             nextFire = Time.time + fireRate;
             fireProjectile(aimX, aimY);
         }
