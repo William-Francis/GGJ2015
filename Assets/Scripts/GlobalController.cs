@@ -120,7 +120,7 @@ public class GlobalController : MonoBehaviour {
         // Level 0 is the menu level
         // Level 1 is the inter-level score screen
         // Levels 2 - n+2 are the n levels
-        if (level > 0)
+        if (level > 1)
         {
             GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("spawnLoc");
             List<GameObject> spawnLocList = new List<GameObject>(spawnPoints);
