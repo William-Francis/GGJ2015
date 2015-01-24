@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public enum PlayerState
 {
@@ -18,6 +18,8 @@ public class GlobalController : MonoBehaviour {
             return _instance;
         }
     }
+
+    public GameObject playerPrefab;
 
     public const int MAX_PLAYER_COUNT = 5;
     public PlayerState[] playerStates;
@@ -64,13 +66,31 @@ public class GlobalController : MonoBehaviour {
 		}
 	}
 
+    void spawnPlayer(int playerIndex, Vector3 position)
+    {
+        GameObject playerObj = (GameObject)Instantiate(playerPrefab);
+        PlayerController control = playerObj.GetComponent<PlayerController>();
+        control.playerID = playerIndex;
+        control.transform.position = position;
+    }
+
 	void OnLevelWasLoaded(int level) {
         // Level 0 is the menu level
         // Level 1 is the inter-level score screen
         // Levels 2 - n+2 are the n levels
-        if (level > 1)
+        if (level > 0)
         {
-
+            GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("spawnLoc");
+            List<GameObject> spawnLocList = new List<GameObject>(spawnPoints);
+            for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+            {
+                if (playerStates[i] == PlayerState.Joined)
+                {
+                    int spawnIndex = Random.Range(0, spawnLocList.Count);
+                    spawnPlayer(i, spawnLocList[spawnIndex].transform.position);
+                    spawnLocList.RemoveAt(spawnIndex);
+                }
+            }
         }
 	}
 

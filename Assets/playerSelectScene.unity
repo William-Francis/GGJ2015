@@ -390,8 +390,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1312429694}
+  - 114: {fileID: 1312429695}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Game Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,6 +410,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1312429695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312429693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d4177ed6eae3945a839237fe1910f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 103856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
+  playerStates: 
 --- !u!1 &1999488671
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18741abba4f550499561464436d0f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 2, y: 2}
-  floatSpeed: 2
-  playerCamera: {fileID: 0}
+  playerID: 0
+  glideSpeed: 20
+  floatSpeed: 40
   bullet: {fileID: 116214, guid: 4c22ccca5376ff54aacf0731cfda3606, type: 2}
 --- !u!212 &21203856
 SpriteRenderer:

@@ -17,25 +17,25 @@ public class PlayerActiveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("A_1"))
 		{
 			Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
 			playerOne.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(0, PlayerState.Joined);
 		}
-		if (Input.GetMouseButtonDown(1))
+		if (Input.GetButtonDown("A_2"))
 		{
 			Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
 			playerTwo.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(1, PlayerState.Joined);
 		}
-		if (Input.GetMouseButtonDown(2))
+		if (Input.GetButtonDown("A_3"))
 		{
 			Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
 			playerThree.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(2, PlayerState.Joined);
 		}
-		if (Input.GetMouseButtonDown(3))
+		if (Input.GetButtonDown("A_4"))
 		{
 			Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
 			playerFour.renderer.material.color = newColor;
@@ -45,6 +45,5 @@ public class PlayerActiveScript : MonoBehaviour {
 		{
 			Application.LoadLevel("level1");
 		}
-
 	}
 }
