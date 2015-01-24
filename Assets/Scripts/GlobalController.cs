@@ -71,6 +71,20 @@ public class GlobalController : MonoBehaviour {
 	void Update () {
 		if(deathList.Count==playerCount-1) // all players are dead
 		{
+			for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+			{
+				if(playerStates[i]==PlayerState.Joined)
+				{
+					playerScore[i] += 3;
+				}
+				playerScore[deathList[0]]+=2; // second last to die
+
+				if(playerCount>2)
+				{
+					playerScore[deathList[1]]+=1; // third
+				}
+			}
+
 			Application.LoadLevel("scoreScene");
 		}
 
