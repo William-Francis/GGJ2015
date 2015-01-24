@@ -59,7 +59,18 @@ public class PlayerActiveScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Application.LoadLevel("level1");
+            int playerCount = 0;
+            for (int i=0; i<GlobalController.MAX_PLAYER_COUNT; ++i)
+            {
+                if (GlobalController.Instance.playerStates[i] == PlayerState.Joined)
+                {
+                    playerCount += 1;
+                }
+            }
+            if (playerCount >= 2)
+            {
+                Application.LoadLevel("level1");
+            }
         }
 	}
 }
