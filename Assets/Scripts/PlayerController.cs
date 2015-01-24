@@ -18,6 +18,19 @@ public class PlayerController : MonoBehaviour
         //neutralScale = scale;
     }
 
+    void kill()
+    {
+        Destroy(gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == 8)
+        {
+            kill();
+        }
+    }
+
 	void FixedUpdate()
 	{
         // 3 - Retrieve axis information
