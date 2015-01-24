@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
+		GlobalController.deathList.Clear();
         //neutralScale = scale;
     }
 
@@ -33,10 +34,15 @@ public class PlayerController : MonoBehaviour
         if (coll.gameObject.layer == 8) // hazard like spike
         {
             kill();
+			GlobalController.deathList.Add(1);
         }
 		if (coll.gameObject.layer == 9) // bullet
 		{
-			weight+=3.0f;
+			weight+=1.0f;
+			coll.transform.parent = transform;
+			coll.rigidbody.isKinematic=true;
+			coll.collider.enabled=false;
+			rigidbody2D.rigidbody2D.mass+=1;
 			//add weight here
 			//kill();
 		}
@@ -90,7 +96,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.velocity = newVelocity;
 
         scale += 0.5f*sign(moveY)*Time.fixedDeltaTime;
-        scale = Mathf.Clamp(scale, 0.25f, 1.0f);
+        scale = Mathf.Clamp(scale, 0.25f, 1.25f);
 
         rigidbody2D.transform.localScale = new Vector3(scale, scale, scale);
 	}
@@ -113,8 +119,9 @@ public class PlayerController : MonoBehaviour
 
         GameObject bulletInstance = (GameObject)Instantiate(bullet, spawnLoc, Quaternion.identity);
         // Should the bullet velocity be affected by the player's velocity?
-        // bulletInstance.rigidbody2D.velocity = rigidbody2D.velocity;
-        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(x, y)*500));
+		Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
+		bulletInstance.renderer.material.color = newColor;
+		bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(x, y)*500));
 	}
 }
  
