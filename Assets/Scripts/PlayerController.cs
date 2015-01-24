@@ -15,17 +15,19 @@ public class PlayerController : MonoBehaviour
 
 	public float fireRate = 0.8f;
 	private float nextFire = 0.0f;
-	
-	
+ 
 	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
-    }
+     }
 
     void kill()
     {
-        Destroy(gameObject);
+		GlobalController.Instance.playerStates[playerID] = PlayerState.Eliminated;
+		GlobalController.Instance.deathList.Add(playerID);
+
+		Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -62,7 +64,8 @@ public class PlayerController : MonoBehaviour
                 moveY = Input.GetAxis("Vertical");
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 direction = mousePosition-transform.position;
-                direction.Normalize();
+			direction.z=0;
+			direction.Normalize();
                 aimX = direction.x;
                 aimY = direction.y;
                 shoot = Input.GetMouseButtonDown(0);

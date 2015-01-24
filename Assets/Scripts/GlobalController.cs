@@ -8,7 +8,11 @@ public enum PlayerState
     Eliminated
 }
 
+
 public class GlobalController : MonoBehaviour {
+
+	public static List<int> deathList  = new List<int>();
+
 
     private static GlobalController _instance;
     public static GlobalController Instance
@@ -23,6 +27,8 @@ public class GlobalController : MonoBehaviour {
 
     public const int MAX_PLAYER_COUNT = 5;
     public PlayerState[] playerStates;
+	public int[] playerScore;
+
 
     void Awake()
     {
@@ -38,9 +44,12 @@ public class GlobalController : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
 
         playerStates = new PlayerState[MAX_PLAYER_COUNT];
+		playerScore= new int[MAX_PLAYER_COUNT];
+
         for (int i=0; i<MAX_PLAYER_COUNT; ++i)
         {
             playerStates[i] = PlayerState.Pending;
+			playerScore[i] = 0;
         }
     }
 
@@ -60,6 +69,11 @@ public class GlobalController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(deathList.Count==playerCount-1) // all players are dead
+		{
+			Application.LoadLevel("scoreScene");
+		}
+
 		if (Input.GetKeyDown("p"))
 		{
 			Application.LoadLevel("testBorderScene");
