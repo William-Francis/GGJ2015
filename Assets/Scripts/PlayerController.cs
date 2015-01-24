@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
         if (coll.gameObject.layer == 8) // hazard like spike
         {
             kill();
-			GlobalController.deathList.Add(1);
         }
 		if (coll.gameObject.layer == 9) // bullet
 		{
