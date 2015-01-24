@@ -25,7 +25,7 @@ public class PlayerActiveScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.W))
         {
             Color newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
-            playerZero.renderer.material.color = newColor;
+            playerOne.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(0, PlayerState.Joined);
             playerZeroImage.SetActive(true);
         }
