@@ -12,7 +12,11 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-    void Awake()
+	public float fireRate = 0.8f;
+	private float nextFire = 0.0f;
+	
+	
+	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
@@ -38,9 +42,10 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		if (Input.GetMouseButtonDown(0) && Time.time > nextFire)
+		{
+			nextFire = Time.time + fireRate;
+			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 direction = mousePosition-transform.position;
             direction.z = 0;
             direction.Normalize();
