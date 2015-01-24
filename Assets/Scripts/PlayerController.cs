@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
 
 	public float fireRate = 0.8f;
 	private float nextFire = 0.0f;
-	
-	
+
+    public Transform aimIndicator;
+
 	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
@@ -68,14 +69,30 @@ public class PlayerController : MonoBehaviour
                 shoot = Input.GetMouseButtonDown(0);
                 break;
 
-            case(1): case(2): case(3): case(4):
+            case(1): case(3):
                 moveX = Input.GetAxis("DPad_XAxis_"+playerID);
                 moveY = Input.GetAxis("DPad_YAxis_"+playerID);
                 aimX = Input.GetAxis("L_XAxis_"+playerID);
                 aimY = Input.GetAxis("L_YAxis_"+playerID);
                 shoot = ((Input.GetAxis("TriggersL_"+playerID) > 0.5f) || (Input.GetButtonDown("LB_"+playerID)));
                 break;
+
+            case (2): case (4):
+                moveX = 0;
+                moveY = 0;
+                if (Input.GetButtonDown("X_"+playerID)) moveX -= 1.0f;
+                if (Input.GetButtonDown("B_"+playerID)) moveX += 1.0f;
+                if (Input.GetButtonDown("Y_"+playerID)) moveY += 1.0f;
+                if (Input.GetButtonDown("A_"+playerID)) moveY -= 1.0f;
+                aimX = Input.GetAxis("R_XAxis_"+playerID);
+                aimY = Input.GetAxis("R_YAxis_"+playerID);
+                shoot = ((Input.GetAxis("TriggersR_"+playerID) > 0.5f) || (Input.GetButtonDown("RB_"+playerID)));
+                break;
         }
+
+        // Rotate aiming indicator
+        float theta = Mathf.Atan2(aimY, aimX) * Mathf.Rad2Deg;
+        aimIndicator.localRotation = Quaternion.Euler(0, 0, theta-90);
 
         // Shoot
         if (shoot && Time.time > nextFire)

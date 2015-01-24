@@ -288,7 +288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press LT/LB to join
+  m_Text: Press LB2 to join
 --- !u!222 &84160999
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press LT/LB to join
+  m_Text: Press LB1 to join
 --- !u!222 &497528922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press LT/LB to join
+  m_Text: Press RB2 to join
 --- !u!222 &1208013210
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1325,7 +1325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press LT/LB to join
+  m_Text: Press RB1 to join
 --- !u!222 &1693580986
 CanvasRenderer:
   m_ObjectHideFlags: 0
