@@ -44,46 +44,40 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		if (Input.GetMouseButtonDown(0) && Time.time > nextFire)
-		{
-			nextFire = Time.time + fireRate;
-			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 direction = mousePosition-transform.position;
-            direction.z = 0;
-            direction.Normalize();
-			fireProjectile(direction);
-		}
-		
         // 3 - Retrieve axis information
         float moveX = 0;
         float moveY = 0;
+        float aimX = 0;
+        float aimY = 0;
+        bool shoot = false;
 
         switch (playerID)
         {
             case(0):
                 moveX = Input.GetAxis("Horizontal");
                 moveY = Input.GetAxis("Vertical");
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 direction = mousePosition-transform.position;
+                direction.Normalize();
+                aimX = direction.x;
+                aimY = direction.y;
+                shoot = Input.GetMouseButtonDown(0);
                 break;
 
-            case(1):
-                moveX = Input.GetAxis("DPad_XAxis_1");
-                moveY = Input.GetAxis("DPad_YAxis_1");
+            case(1): case(2): case(3): case(4):
+                moveX = Input.GetAxis("DPad_XAxis_"+playerID);
+                moveY = Input.GetAxis("DPad_YAxis_"+playerID);
+                aimX = Input.GetAxis("L_XAxis_"+playerID);
+                aimY = Input.GetAxis("L_YAxis_"+playerID);
+                shoot = ((Input.GetAxis("TriggersL_"+playerID) > 0.5f) || (Input.GetButtonDown("LB_"+playerID)));
                 break;
+        }
 
-            case(2):
-                moveX = Input.GetAxis("DPad_XAxis_2");
-                moveY = Input.GetAxis("DPad_YAxis_2");
-                break;
-
-            case(3):
-                moveX = Input.GetAxis("DPad_XAxis_3");
-                moveY = Input.GetAxis("DPad_YAxis_3");
-                break;
-
-            case (4):
-                moveX = Input.GetAxis("DPad_XAxis_4");
-                moveY = Input.GetAxis("DPad_YAxis_4");
-                break;
+        // Shoot
+        if (shoot && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            fireProjectile(aimX, aimY);
         }
 
         // 5 - Move the game object
@@ -111,14 +105,16 @@ public class PlayerController : MonoBehaviour
             return -1.0f;
     }
 
-	void fireProjectile(Vector3 direction)
+	void fireProjectile(float x, float y)
 	{
-        Vector3 spawnLoc = transform.position + direction*scale*1.9f; //was 1.3f
+        Vector3 spawnLoc = transform.position;
+        spawnLoc.x += x*scale*1.9f;
+        spawnLoc.y += y*scale*1.9f;
 
         GameObject bulletInstance = (GameObject)Instantiate(bullet, spawnLoc, Quaternion.identity);
         // Should the bullet velocity be affected by the player's velocity?
-        //bulletInstance.rigidbody2D.velocity = rigidbody2D.velocity;
-        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(direction.x, direction.y)*500));
+        // bulletInstance.rigidbody2D.velocity = rigidbody2D.velocity;
+        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(x, y)*500));
 	}
 }
  
