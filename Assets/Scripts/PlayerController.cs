@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-	public float fireRate = 0.001f;
+	public float fireRate = 0.1f;
 	private float nextFire = 0.0f;
  
 	void Awake()
@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     void kill()
     {
-		GlobalController.Instance.playerStates[playerID] = PlayerState.Eliminated;
 		GlobalController.Instance.killPlayer(playerID);
 
 		Destroy(gameObject);
@@ -81,8 +80,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Shoot
-        if (shoot  )
-        {
+		if (shoot  && Time.time > nextFire)
+		{
             nextFire = Time.time + fireRate;
             fireProjectile(aimX, aimY);
         }

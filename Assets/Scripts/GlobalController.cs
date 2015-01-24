@@ -62,6 +62,11 @@ public class GlobalController : MonoBehaviour {
         }
     }
 
+	public string scoreToString()
+	{
+		return "string";
+	}
+
     public void setPlayerState(int player, PlayerState state)
     {
         playerStates[player] = state;
