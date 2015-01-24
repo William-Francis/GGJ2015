@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-	public float fireRate = 0.8f;
+	public float fireRate = 0.01f;
 	private float nextFire = 0.0f;
 
     public Transform aimIndicator;
@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour
     {
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
-    }
+     }
 
     void kill()
     {
-        Destroy(gameObject);
+		GlobalController.Instance.playerStates[playerID] = PlayerState.Eliminated;
+		GlobalController.Instance.killPlayer(playerID);
+
+		Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -63,7 +66,8 @@ public class PlayerController : MonoBehaviour
                 moveY = Input.GetAxis("Vertical");
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 direction = mousePosition-transform.position;
-                direction.Normalize();
+			direction.z=0;
+			direction.Normalize();
                 aimX = direction.x;
                 aimY = direction.y;
                 shoot = Input.GetMouseButtonDown(0);
@@ -95,7 +99,7 @@ public class PlayerController : MonoBehaviour
         aimIndicator.localRotation = Quaternion.Euler(0, 0, theta-90);
 
         // Shoot
-        if (shoot && Time.time > nextFire)
+        if (shoot  )
         {
             nextFire = Time.time + fireRate;
             fireProjectile(aimX, aimY);

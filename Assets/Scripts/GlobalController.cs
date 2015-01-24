@@ -8,7 +8,11 @@ public enum PlayerState
     Eliminated
 }
 
+
 public class GlobalController : MonoBehaviour {
+
+	public static List<int> deathList  = new List<int>();
+
 
     private static GlobalController _instance;
     public static GlobalController Instance
@@ -23,6 +27,8 @@ public class GlobalController : MonoBehaviour {
 
     public const int MAX_PLAYER_COUNT = 5;
     public PlayerState[] playerStates;
+	public int[] playerScore;
+
 
     void Awake()
     {
@@ -38,9 +44,12 @@ public class GlobalController : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
 
         playerStates = new PlayerState[MAX_PLAYER_COUNT];
+		playerScore= new int[MAX_PLAYER_COUNT];
+
         for (int i=0; i<MAX_PLAYER_COUNT; ++i)
         {
             playerStates[i] = PlayerState.Pending;
+			playerScore[i] = 0;
         }
     }
 
@@ -58,8 +67,41 @@ public class GlobalController : MonoBehaviour {
         playerStates[player] = state;
     }
 
+	public void killPlayer(int playerIndex)
+	{
+		deathList.Add(playerIndex);
+		playerStates[playerIndex] = PlayerState.Eliminated;
+		int count =0;
+		int lastAlive =0;
+		for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+		{
+		if(	playerStates[i] == PlayerState.Joined)
+			{
+				lastAlive = i;
+				count++;
+			}
+ 		}
+
+		if(count<=1) // all players are dead
+		{		 
+				 
+				playerScore[lastAlive] += 3;
+				 
+				playerScore[deathList[deathList.Count-1]]+=2; // second last to die
+				
+				if(playerCount>2)
+				{
+				playerScore[deathList[deathList.Count-2]]+=1; // third
+				}
+			Application.LoadLevel("scoreScreen");
+		}
+
+	}
+
 	// Update is called once per frame
 	void Update () {
+ 
+
 		if (Input.GetKeyDown("p"))
 		{
 			Application.LoadLevel("testBorderScene");
