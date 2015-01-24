@@ -5,7 +5,7 @@ public class ScoreScreenController : MonoBehaviour {
 
 	public GameObject textOne;
 	// Use this for initialization
-	void Start () {
+	void Start () {	
 		TextMesh t = (TextMesh)textOne.GetComponent(typeof(TextMesh));
 		t.text =  GlobalController.Instance.scoreToString() ;// + " " + GlobalController.Instance.playerScore.ToString;
 	}
@@ -16,12 +16,17 @@ public class ScoreScreenController : MonoBehaviour {
 		
 		if (Input.GetKeyDown("space"))
 		{			
-			Application.LoadLevel("level2");
+			print(GlobalController.Instance.levelIndex);
+			GlobalController.Instance.levelIndex +=1;
+			print(GlobalController.Instance.levelIndex);
+			GlobalController.Instance.resetPlayers();
+			Application.LoadLevel("level"+GlobalController.Instance.levelIndex);
 
 		}
 
 		if (Input.GetKeyDown("r"))
 		{
+			GlobalController.Instance.totalReset();
 			Application.LoadLevel("playerSelectScene");
 
 		}

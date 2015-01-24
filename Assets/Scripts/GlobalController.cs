@@ -13,6 +13,7 @@ public class GlobalController : MonoBehaviour {
 
 	public static List<int> deathList  = new List<int>();
 
+	public int levelIndex =1;
 
     private static GlobalController _instance;
     public static GlobalController Instance
@@ -61,6 +62,24 @@ public class GlobalController : MonoBehaviour {
             return result;
         }
     }
+
+	public void resetPlayers()
+	{
+		for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+		{
+			if(playerStates[i] ==PlayerState.Eliminated)
+			{playerStates[i] = PlayerState.Joined;
+			}
+		}
+	}
+	public void totalReset()
+	{
+		for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+		{
+			 playerStates[i] = PlayerState.Pending;
+			playerScore[i]=0;
+		}
+	}
 
 	public string scoreToString()
 	{
