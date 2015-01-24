@@ -67,26 +67,40 @@ public class GlobalController : MonoBehaviour {
         playerStates[player] = state;
     }
 
-	// Update is called once per frame
-	void Update () {
-		if(deathList.Count==playerCount-1) // all players are dead
+	public void killPlayer(int playerIndex)
+	{
+		deathList.Add(playerIndex);
+		playerStates[playerIndex] = PlayerState.Eliminated;
+		int count =0;
+		int lastAlive =0;
+		for (int i=0; i<MAX_PLAYER_COUNT; ++i)
 		{
-			for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+		if(	playerStates[i] == PlayerState.Joined)
 			{
-				if(playerStates[i]==PlayerState.Joined)
-				{
-					playerScore[i] += 3;
-				}
-				playerScore[deathList[0]]+=2; // second last to die
+				lastAlive = i;
+				count++;
+			}
+ 		}
 
+		if(count<=1) // all players are dead
+		{		 
+				 
+				playerScore[lastAlive] += 3;
+				 
+				playerScore[deathList[deathList.Count-1]]+=2; // second last to die
+				
 				if(playerCount>2)
 				{
-					playerScore[deathList[1]]+=1; // third
+				playerScore[deathList[deathList.Count-2]]+=1; // third
 				}
-			}
-
-			Application.LoadLevel("scoreScene");
+			Application.LoadLevel("scoreScreen");
 		}
+
+	}
+
+	// Update is called once per frame
+	void Update () {
+ 
 
 		if (Input.GetKeyDown("p"))
 		{

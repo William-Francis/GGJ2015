@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void kill()
     {
 		GlobalController.Instance.playerStates[playerID] = PlayerState.Eliminated;
-		GlobalController.deathList.Add(playerID);
+		GlobalController.Instance.killPlayer(playerID);
 
 		Destroy(gameObject);
     }
