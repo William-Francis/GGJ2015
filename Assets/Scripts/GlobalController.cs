@@ -64,7 +64,17 @@ public class GlobalController : MonoBehaviour {
 
 	public string scoreToString()
 	{
-		return "string";
+		string fullString ="\n";
+
+		for (int i=0; i<MAX_PLAYER_COUNT; ++i)
+		{
+			if(playerStates[i]!=PlayerState.Pending)
+			{
+			fullString += "Player " + i +" score: " +playerScore[i] + "\n";
+			}
+		}
+
+		return fullString;
 	}
 
     public void setPlayerState(int player, PlayerState state)
