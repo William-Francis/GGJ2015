@@ -52,7 +52,7 @@ public class PlayerActiveScript : MonoBehaviour {
 		}
 		if (Input.GetKeyDown("space"))
 		{
-			GlobalCntrl.setNumberOfPlayers(playerOneInt+playerTwoInt+playerThreeInt+playerFourInt );
+			GlobalController.setNumberOfPlayers(playerOneInt+playerTwoInt+playerThreeInt+playerFourInt );
 			Application.LoadLevel("testBorderScene");
 		}
 
