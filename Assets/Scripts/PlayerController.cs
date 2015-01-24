@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
-		GlobalController.deathList.Clear();
         //neutralScale = scale;
     }
 
