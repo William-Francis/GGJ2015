@@ -1,16 +1,14 @@
+ 
 using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-	/// <summary>
-	/// 1 - The speed of the ship
-	/// </summary>
-	public Vector2 speed = new Vector2(2, 2);
+    public int playerID = 0;
 
-    public float floatSpeed = 2;
-	 public Camera playerCamera;
-    private float scale;
+    public float glideSpeed = 100;
+    public float floatSpeed = 40;
+     private float scale;
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
@@ -20,11 +18,24 @@ public class PlayerController : MonoBehaviour
         //neutralScale = scale;
     }
 
+    void kill()
+    {
+        Destroy(gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == 8)
+        {
+            kill();
+        }
+    }
+
 	void FixedUpdate()
 	{
-		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
- 		if (Input.GetMouseButtonDown(0)) {		 
+		if (Input.GetMouseButtonDown(0)) {		 
 			fireProjectile();
 			GameObject bulletInstance = (GameObject) Instantiate(bullet, 
 			                                 rigidbody2D.position , // need to add a space outside of current pig radius towards mouse click 
@@ -32,21 +43,18 @@ public class PlayerController : MonoBehaviour
 			bulletInstance.rigidbody2D.AddForce((new Vector2(mousePosition.x, mousePosition.y)-rigidbody2D.position)*100);
 			//bulletInstance.transform.AddForce(rigidbody2D.transform.forward * force);
 		}
-
+		
         // 3 - Retrieve axis information
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
-        // 4 - Movement per direction
-        Vector2 movement = new Vector2(speed.x * moveX / 10, 0*speed.y * moveY / 20);
-
         // 5 - Move the game object
         // We want scale of 1 to result in 0 upwards acceleration
         // Clamp scale to a positive value so we don't sink directly due to scale
-        float floatAcceleration = floatSpeed*Mathf.Max(0,(scale - neutralScale));
+        float floatAcceleration = floatSpeed*scale;
         Vector2 newVelocity = rigidbody2D.velocity;
-        newVelocity.x = movement.x;
-        newVelocity.y += floatAcceleration;
+        newVelocity.x = glideSpeed*moveX;
+        newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f;
         rigidbody2D.velocity = newVelocity;
 
         if (Input.GetKey(KeyCode.W))
@@ -61,11 +69,11 @@ public class PlayerController : MonoBehaviour
 
         rigidbody2D.transform.localScale = new Vector3(scale, scale, scale);
 	}
-
+	
 	void fireProjectile()
 	{
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Debug.DrawRay(rigidbody2D.position, new Vector2(mousePosition.x, mousePosition.y)-rigidbody2D.position ,Color.red);
 	}
-
 }
+ 
