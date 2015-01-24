@@ -7,3 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/GlobalScene.unity
+  - enabled: 1
+    path: Assets/testBorderScene.unity
+  - enabled: 1
+    path: Assets/playerSelectScene.unity
