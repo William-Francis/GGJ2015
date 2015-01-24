@@ -12,7 +12,11 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-    void Awake()
+	public float fireRate = 0.8f;
+	private float nextFire = 0.0f;
+	
+	
+	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
@@ -25,17 +29,23 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.layer == 8)
+        if (coll.gameObject.layer == 8) // hazard like spike
         {
             kill();
         }
-    }
-
+		if (coll.gameObject.layer == 9) // bullet
+		{
+			//add weight here
+			//kill();
+		}
+	}
+	
 	void FixedUpdate()
 	{
-		if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		if (Input.GetMouseButtonDown(0) && Time.time > nextFire)
+		{
+			nextFire = Time.time + fireRate;
+			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 direction = mousePosition-transform.position;
             direction.z = 0;
             direction.Normalize();
@@ -101,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
 	void fireProjectile(Vector3 direction)
 	{
-        Vector3 spawnLoc = transform.position + direction*scale*1.3f;
+        Vector3 spawnLoc = transform.position + direction*scale*1.9f; //was 1.3f
 
         GameObject bulletInstance = (GameObject)Instantiate(bullet, spawnLoc, Quaternion.identity);
         // Should the bullet velocity be affected by the player's velocity?
