@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float glideSpeed = 100;
     public float floatSpeed = 40;
+	public float weight = 0.1f;
      private float scale;
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         }
 		if (coll.gameObject.layer == 9) // bullet
 		{
+			weight+=3.0f;
 			//add weight here
 			//kill();
 		}
@@ -90,7 +92,7 @@ public class PlayerController : MonoBehaviour
         float floatAcceleration = floatSpeed*scale;
         Vector2 newVelocity = rigidbody2D.velocity;
         newVelocity.x = glideSpeed*moveX;
-        newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f;
+		newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f -weight;
         rigidbody2D.velocity = newVelocity;
 
         scale += 0.5f*sign(moveY)*Time.fixedDeltaTime;
