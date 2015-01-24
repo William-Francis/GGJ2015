@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
 	{
 				Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-		if (Input.GetMouseButtonDown(0)) {		 
+		if (Input.GetMouseButtonDown(0))
+        {
 			fireProjectile();
 			GameObject bulletInstance = (GameObject) Instantiate(bullet, 
 			                                 rigidbody2D.position , // need to add a space outside of current pig radius towards mouse click 
