@@ -33,21 +33,46 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-				Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
 		if (Input.GetMouseButtonDown(0))
         {
-			fireProjectile();
-			GameObject bulletInstance = (GameObject) Instantiate(bullet, 
-			                                 rigidbody2D.position , // need to add a space outside of current pig radius towards mouse click 
-			                                 rigidbody2D.transform.rotation);
-			bulletInstance.rigidbody2D.AddForce((new Vector2(mousePosition.x, mousePosition.y)-rigidbody2D.position)*100);
-			//bulletInstance.transform.AddForce(rigidbody2D.transform.forward * force);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 direction = mousePosition-transform.position;
+            direction.z = 0;
+            direction.Normalize();
+			fireProjectile(direction);
 		}
 		
         // 3 - Retrieve axis information
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+        float moveX = 0;
+        float moveY = 0;
+
+        switch (playerID)
+        {
+            case(0):
+                moveX = Input.GetAxis("Horizontal");
+                moveY = Input.GetAxis("Vertical");
+                break;
+
+            case(1):
+                moveX = Input.GetAxis("DPad_XAxis_1");
+                moveY = Input.GetAxis("DPad_YAxis_1");
+                break;
+
+            case(2):
+                moveX = Input.GetAxis("DPad_XAxis_2");
+                moveY = Input.GetAxis("DPad_YAxis_2");
+                break;
+
+            case(3):
+                moveX = Input.GetAxis("DPad_XAxis_3");
+                moveY = Input.GetAxis("DPad_YAxis_3");
+                break;
+
+            case (4):
+                moveX = Input.GetAxis("DPad_XAxis_4");
+                moveY = Input.GetAxis("DPad_YAxis_4");
+                break;
+        }
 
         // 5 - Move the game object
         // We want scale of 1 to result in 0 upwards acceleration
@@ -58,23 +83,28 @@ public class PlayerController : MonoBehaviour
         newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f;
         rigidbody2D.velocity = newVelocity;
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            scale += 0.5f*Time.fixedDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            scale -= 0.5f*Time.fixedDeltaTime;
-        }
+        scale += 0.5f*sign(moveY)*Time.fixedDeltaTime;
         scale = Mathf.Clamp(scale, 0.25f, 1.0f);
 
         rigidbody2D.transform.localScale = new Vector3(scale, scale, scale);
 	}
-	
-	void fireProjectile()
+
+    float sign(float f)
+    {
+        if (f == 0)
+            return 0.0f;
+        else if (f > 0)
+            return 1.0f;
+        else //if (f < 0)
+            return -1.0f;
+    }
+
+	void fireProjectile(Vector3 direction)
 	{
-		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Debug.DrawRay(rigidbody2D.position, new Vector2(mousePosition.x, mousePosition.y)-rigidbody2D.position ,Color.red);
+        Vector3 spawnLoc = transform.position + direction*scale*1.3f;
+
+        GameObject bulletInstance = (GameObject)Instantiate(bullet, spawnLoc, Quaternion.identity);
+        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(direction.x, direction.y)*100));
 	}
 }
  
