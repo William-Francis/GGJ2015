@@ -19,6 +19,7 @@ public class ScoreScreenController : MonoBehaviour {
 			print(GlobalController.Instance.levelIndex);
 			GlobalController.Instance.levelIndex +=1;
 			print(GlobalController.Instance.levelIndex);
+			//totalNumberOfLevels
 			GlobalController.Instance.resetPlayers();
 			Application.LoadLevel("level"+GlobalController.Instance.levelIndex);
 

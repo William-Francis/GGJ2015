@@ -14,6 +14,7 @@ public class GlobalController : MonoBehaviour {
 	public static List<int> deathList  = new List<int>();
 
 	public int levelIndex =1;
+	public int totalNumberOfLevels =2;
 
     private static GlobalController _instance;
     public static GlobalController Instance
