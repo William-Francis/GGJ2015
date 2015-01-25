@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,10 +9,12 @@ public class PlayerController : MonoBehaviour
 
     public float glideSpeed = 100;
     public float floatSpeed = 40;
-	public float weight = 0.1f;
+	private float weight = -4.1f;
      private float scale;
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
+
+	private List<Vector3> bounceList = new List<Vector3> ();
 
 	private float fireRate = 0.1f;
 	private float nextFire = 0.0f;
@@ -43,10 +47,14 @@ public class PlayerController : MonoBehaviour
 			coll.transform.parent = transform;
 			coll.rigidbody.isKinematic=true;
 			coll.collider.enabled=false;
-			rigidbody2D.rigidbody2D.mass+=1;
+			rigidbody2D.mass+=1;
 			//add weight here
 			//kill();
 		}
+		if(coll.gameObject.GetComponent<PlayerController>()) // collision with player
+		{
+			bounceList.Add(new Vector3(coll.gameObject.rigidbody2D.velocity.x*1.0f,coll.gameObject.rigidbody2D.velocity.y*1.0f,Time.time +1.0f));
+		}  
 	}
 	
 	void FixedUpdate()
@@ -111,6 +119,26 @@ public class PlayerController : MonoBehaviour
         Vector2 newVelocity = rigidbody2D.velocity;
         newVelocity.x = glideSpeed*moveX;
 		newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f -weight;
+
+
+		///Adding bounce factor from list
+		for(int i = 0; i < bounceList.Count;i++)
+		{
+			 
+			if(bounceList[i].z <= Time.time)
+			{
+				bounceList.RemoveAt(i);
+				i+=-1;
+			}
+			else{
+
+			newVelocity.x += bounceList[i].x;
+			newVelocity.y += bounceList[i].y;
+			}
+		}
+
+
+		/// 
         rigidbody2D.velocity = newVelocity;
 
         scale += 0.5f*sign(moveY)*Time.fixedDeltaTime;
