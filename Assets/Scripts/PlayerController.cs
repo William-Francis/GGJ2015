@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,35 +62,37 @@ public class PlayerController : MonoBehaviour
         switch (playerID)
         {
             case(0):
-                moveX = Input.GetAxis("Horizontal");
+                /*moveX = Input.GetAxis("Horizontal");
                 moveY = Input.GetAxis("Vertical");
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 direction = mousePosition-transform.position;
-			direction.z=0;
-			direction.Normalize();
+			    direction.z=0;
+			    direction.Normalize();
                 aimX = direction.x;
                 aimY = direction.y;
-                shoot = Input.GetMouseButtonDown(0);
+                shoot = Input.GetMouseButtonDown(0);*/
                 break;
 
             case(1): case(3):
-                moveX = Input.GetAxis("DPad_XAxis_"+playerID);
-                moveY = Input.GetAxis("DPad_YAxis_"+playerID);
-                aimX = Input.GetAxis("L_XAxis_"+playerID);
-                aimY = Input.GetAxis("L_YAxis_"+playerID);
-                shoot = ((Input.GetAxis("TriggersL_"+playerID) > 0.5f) || (Input.GetButtonDown("LB_"+playerID)));
+                if (XCI.GetDPad(XboxDPad.Left, (playerID+1)/2)) moveX -= 1.0f;
+                if (XCI.GetDPad(XboxDPad.Right, (playerID+1)/2)) moveX += 1.0f;
+                if (XCI.GetDPad(XboxDPad.Up, (playerID+1)/2)) moveY += 1.0f;
+                if (XCI.GetDPad(XboxDPad.Down, (playerID+1)/2)) moveY -= 1.0f;
+                aimX = XCI.GetAxis(XboxAxis.LeftStickX, (playerID+1)/2);
+                aimY = XCI.GetAxis(XboxAxis.LeftStickY, (playerID+1)/2);
+                shoot = ((XCI.GetAxis(XboxAxis.LeftTrigger, (playerID+1)/2) > 0.5f) ||
+                            (XCI.GetButtonDown(XboxButton.LeftBumper, (playerID+1)/2)));
                 break;
 
             case (2): case (4):
-                moveX = 0;
-                moveY = 0;
-                if (Input.GetButtonDown("X_"+playerID)) moveX -= 1.0f;
-                if (Input.GetButtonDown("B_"+playerID)) moveX += 1.0f;
-                if (Input.GetButtonDown("Y_"+playerID)) moveY += 1.0f;
-                if (Input.GetButtonDown("A_"+playerID)) moveY -= 1.0f;
-                aimX = Input.GetAxis("R_XAxis_"+playerID);
-                aimY = Input.GetAxis("R_YAxis_"+playerID);
-                shoot = ((Input.GetAxis("TriggersR_"+playerID) > 0.5f) || (Input.GetButtonDown("RB_"+playerID)));
+                if (XCI.GetButton(XboxButton.X, playerID/2)) moveX -= 1.0f;
+                if (XCI.GetButton(XboxButton.B, playerID/2)) moveX += 1.0f;
+                if (XCI.GetButton(XboxButton.Y, playerID/2)) moveY += 1.0f;
+                if (XCI.GetButton(XboxButton.A, playerID/2)) moveY -= 1.0f;
+                aimX = XCI.GetAxis(XboxAxis.RightStickX, playerID/2);
+                aimY = XCI.GetAxis(XboxAxis.RightStickY, playerID/2);
+                shoot = ((XCI.GetAxis(XboxAxis.RightTrigger, playerID/2) > 0.5f) ||
+                            (XCI.GetButtonDown(XboxButton.RightBumper, playerID/2)));
                 break;
         }
 
