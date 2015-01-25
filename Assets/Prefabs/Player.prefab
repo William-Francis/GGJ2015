@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11403856}
   - 50: {fileID: 5003856}
   - 58: {fileID: 5881542}
+  - 82: {fileID: 8221268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -114,6 +115,64 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: 1.10000002
   m_Center: {x: 0, y: 0}
+--- !u!82 &8221268
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103856}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 1
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11403856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,9 +187,12 @@ MonoBehaviour:
   playerID: 0
   glideSpeed: 20
   floatSpeed: 40
-  weight: .100000001
   bullet: {fileID: 116214, guid: 4c22ccca5376ff54aacf0731cfda3606, type: 2}
-  fireRate: .800000012
+  pigSnort1: {fileID: 8300000, guid: d8d646411958dd84286f9e30af3813e9, type: 3}
+  pigSnort2: {fileID: 8300000, guid: 4b66200170c76d442ace3ab5f5077730, type: 3}
+  pigSnort3: {fileID: 8300000, guid: d48ac2a8a7c73664dbf57953be5d3ad0, type: 3}
+  pigSnort4: {fileID: 8300000, guid: d343ffbd0d5963c4992dfddf81ec5579, type: 3}
+  source: {fileID: 8206640, guid: 51164b90e3b476149997949ec612e748, type: 2}
   aimIndicator: {fileID: 455284}
 --- !u!212 &21203856
 SpriteRenderer:

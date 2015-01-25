@@ -14,6 +14,15 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
+	public AudioClip pigSnort1;
+	public AudioClip pigSnort2;
+	public AudioClip pigSnort3;
+	public AudioClip pigSnort4;
+
+
+	public AudioSource source;
+
+
 	private List<Vector3> bounceList = new List<Vector3> ();
 
 	private float fireRate = 0.1f;
@@ -23,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
 	void Awake()
     {
+		source = GetComponent<AudioSource>();
+
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
      }
@@ -53,12 +64,17 @@ public class PlayerController : MonoBehaviour
 		}
 		if(coll.gameObject.GetComponent<PlayerController>()) // collision with player
 		{
+			source.PlayOneShot(pigSnort1,0.8f);
+			//source.Play();
+			//audio.Play(pigSnort);
 			bounceList.Add(new Vector3(coll.gameObject.rigidbody2D.velocity.x*1.0f,coll.gameObject.rigidbody2D.velocity.y*1.0f,Time.time +1.0f));
 		}  
 	}
 	
 	void FixedUpdate()
 	{
+		//source.Play();
+		//source.PlayOneShot(pigSnort);
         // 3 - Retrieve axis information
         float moveX = 0;
         float moveY = 0;
