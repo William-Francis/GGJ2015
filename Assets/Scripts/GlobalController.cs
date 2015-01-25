@@ -33,6 +33,11 @@ public class GlobalController : MonoBehaviour {
 
 	public int totalPlayerCount=0;
 
+    public Sprite playerZeroImage;
+    public Sprite playerOneImage;
+    public Sprite playerTwoImage;
+    public Sprite playerThreeImage;
+    public Sprite playerFourImage;
 
     void Awake()
     {
@@ -164,6 +169,25 @@ public class GlobalController : MonoBehaviour {
         PlayerController control = playerObj.GetComponent<PlayerController>();
         control.playerID = playerIndex;
         control.transform.position = position;
+
+        switch (playerIndex)
+        {
+            case(0):
+                playerObj.GetComponent<SpriteRenderer>().sprite = playerZeroImage;
+                break;
+            case (1):
+                playerObj.GetComponent<SpriteRenderer>().sprite = playerOneImage;
+                break;
+            case (2):
+                playerObj.GetComponent<SpriteRenderer>().sprite = playerTwoImage;
+                break;
+            case (3):
+                playerObj.GetComponent<SpriteRenderer>().sprite = playerThreeImage;
+                break;
+            case (4):
+                playerObj.GetComponent<SpriteRenderer>().sprite = playerFourImage;
+                break;
+        }
     }
 
 	void OnLevelWasLoaded(int level) {
