@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  glideSpeed: 20
+  glideSpeed: 10
   floatSpeed: 40
   weight: .100000001
   bullet: {fileID: 116214, guid: 4c22ccca5376ff54aacf0731cfda3606, type: 2}
