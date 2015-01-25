@@ -68,6 +68,7 @@ public class PlayerActiveScript : MonoBehaviour {
                     playerCount += 1;
                 }
             }
+            GlobalController.Instance.totalPlayerCount = playerCount;
             if (playerCount >= 2)
             {
                 Application.LoadLevel("level1");

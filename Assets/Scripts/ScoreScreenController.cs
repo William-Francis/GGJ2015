@@ -16,13 +16,7 @@ public class ScoreScreenController : MonoBehaviour {
 		
 		if (Input.GetKeyDown("space"))
 		{			
-			print(GlobalController.Instance.levelIndex);
-			GlobalController.Instance.levelIndex +=1;
-			print(GlobalController.Instance.levelIndex);
-			//totalNumberOfLevels
-			GlobalController.Instance.resetPlayers();
-			Application.LoadLevel("level"+GlobalController.Instance.levelIndex);
-
+			Application.LoadLevel("level"+GlobalController.Instance.getNextLevel());
 		}
 
 		if (Input.GetKeyDown("r"))
