@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
     private float lastAimX;
     private float lastAimY;
 
+	public AudioClip pigSnort1;
+	public AudioClip pigSnort2;
+	public AudioClip pigSnort3;
+	public AudioClip pigSnort4;
+
+	public AudioSource source;
+
     public Transform aimIndicator;
 
     public float BOUNCE_THRESHOLD = 0.2f;
@@ -31,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+		source = GetComponent<AudioSource>();
+
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
 
@@ -93,6 +102,8 @@ public class PlayerController : MonoBehaviour
             float otherDeltaBounce = Time.time - otherPlayer.lastBounceTime;
             if (deltaBounce > BOUNCE_THRESHOLD && otherDeltaBounce > BOUNCE_THRESHOLD)
             {
+                source.PlayOneShot(pigSnort1,0.8f);
+
                 lastBounceTime = Time.time;
                 otherPlayer.lastBounceTime = Time.time;
 
