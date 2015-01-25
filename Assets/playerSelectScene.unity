@@ -864,6 +864,11 @@ MonoBehaviour:
   playerTwo: {fileID: 1999488671}
   playerThree: {fileID: 726717813}
   playerFour: {fileID: 741334735}
+  images:
+  - {fileID: 21300000, guid: 59e61759f71bb2144aa18d6062392576, type: 3}
+  - {fileID: 21300000, guid: 1d9f9427c67efb3498797111a6ef2de9, type: 3}
+  - {fileID: 21300000, guid: d78810d6372a0894b9dc9064b16c5771, type: 3}
+  - {fileID: 21300000, guid: 50ad29e9334637442b914e9839cc7b6e, type: 3}
   playerZeroImage: {fileID: 184298377}
   playerOneImage: {fileID: 1169035167}
   playerTwoImage: {fileID: 1510675642}
@@ -1304,8 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d4177ed6eae3945a839237fe1910f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
-  totalNumberOfLevels: 2
   playerPrefab: {fileID: 103856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
   playerStates: 
   playerScore: 
