@@ -187,13 +187,22 @@ MonoBehaviour:
   playerID: 0
   glideSpeed: 20
   floatSpeed: 40
+  weight: .100000001
   bullet: {fileID: 116214, guid: 4c22ccca5376ff54aacf0731cfda3606, type: 2}
   pigSnort1: {fileID: 8300000, guid: d8d646411958dd84286f9e30af3813e9, type: 3}
   pigSnort2: {fileID: 8300000, guid: 4b66200170c76d442ace3ab5f5077730, type: 3}
   pigSnort3: {fileID: 8300000, guid: d48ac2a8a7c73664dbf57953be5d3ad0, type: 3}
   pigSnort4: {fileID: 8300000, guid: d343ffbd0d5963c4992dfddf81ec5579, type: 3}
+  pigDeflate1: {fileID: 8300000, guid: ddd1cb30f7c518449b82e3807981241a, type: 3}
+  pigDeflate2: {fileID: 8300000, guid: 36c994ec9bd6c0740b4a1b447e521d53, type: 3}
+  pigDeflate3: {fileID: 8300000, guid: 85ffad14681dace4fa87d05dc6187145, type: 3}
+  pigDeflate4: {fileID: 8300000, guid: f1a8db1579d925f45b36048631207ac1, type: 3}
+  pigDeflate5: {fileID: 8300000, guid: 115ecf58a9faa6d4eb6c5e3fef9124f7, type: 3}
+  pigDeflate6: {fileID: 8300000, guid: 6ca28e4c7bac9784792dd96facb6b236, type: 3}
+  pigDeflate7: {fileID: 8300000, guid: 041c415e61de61842be59030884dcc2b, type: 3}
   source: {fileID: 8206640, guid: 51164b90e3b476149997949ec612e748, type: 2}
   aimIndicator: {fileID: 455284}
+  BOUNCE_THRESHOLD: .200000003
 --- !u!212 &21203856
 SpriteRenderer:
   m_ObjectHideFlags: 1
