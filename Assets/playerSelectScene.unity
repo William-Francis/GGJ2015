@@ -869,6 +869,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1d9f9427c67efb3498797111a6ef2de9, type: 3}
   - {fileID: 21300000, guid: d78810d6372a0894b9dc9064b16c5771, type: 3}
   - {fileID: 21300000, guid: 50ad29e9334637442b914e9839cc7b6e, type: 3}
+  - {fileID: 21300000, guid: 0c80c72b7d4478e42a5e0305fbc4b6d5, type: 3}
   playerZeroImage: {fileID: 184298377}
   playerOneImage: {fileID: 1169035167}
   playerTwoImage: {fileID: 1510675642}
@@ -1400,6 +1401,11 @@ MonoBehaviour:
   playerStates: 
   playerScore: 
   totalPlayerCount: 0
+  playerZeroImage: {fileID: 0}
+  playerOneImage: {fileID: 0}
+  playerTwoImage: {fileID: 0}
+  playerThreeImage: {fileID: 0}
+  playerFourImage: {fileID: 0}
 --- !u!1 &1381224991
 GameObject:
   m_ObjectHideFlags: 0

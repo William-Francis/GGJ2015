@@ -98,6 +98,12 @@ public class PlayerActiveScript : MonoBehaviour {
                 }
             }
             GlobalController.Instance.totalPlayerCount = playerCount;
+            GlobalController.Instance.playerZeroImage = playerZeroImage.GetComponent<SpriteRenderer>().sprite;
+            GlobalController.Instance.playerOneImage = playerOneImage.GetComponent<SpriteRenderer>().sprite;
+            GlobalController.Instance.playerTwoImage = playerTwoImage.GetComponent<SpriteRenderer>().sprite;
+            GlobalController.Instance.playerThreeImage = playerThreeImage.GetComponent<SpriteRenderer>().sprite;
+            GlobalController.Instance.playerFourImage = playerFourImage.GetComponent<SpriteRenderer>().sprite;
+
             if (playerCount >= 2)
             {
                 Application.LoadLevel("level1");
