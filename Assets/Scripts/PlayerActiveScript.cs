@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
  
 public class PlayerActiveScript : MonoBehaviour {
 
@@ -29,28 +30,28 @@ public class PlayerActiveScript : MonoBehaviour {
             GlobalController.Instance.setPlayerState(0, PlayerState.Joined);
             playerZeroImage.SetActive(true);
         }
-        if ((Input.GetAxis("TriggersL_1") > 0.5f) || Input.GetButtonDown("LB_1"))
+        if((XCI.GetAxis(XboxAxis.LeftTrigger, 1) > 0.5f) || XCI.GetButtonDown(XboxButton.LeftBumper, 1))
         {
             Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
             playerOne.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(1, PlayerState.Joined);
             playerOneImage.SetActive(true);
         }
-        if ((Input.GetAxis("TriggersR_1") > 0.5f) || Input.GetButtonDown("RB_1"))
+        if ((XCI.GetAxis(XboxAxis.RightTrigger, 1) > 0.5f) || XCI.GetButtonDown(XboxButton.RightBumper, 1))
         {
             Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
             playerTwo.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(2, PlayerState.Joined);
             playerTwoImage.SetActive(true);
         }
-        if ((Input.GetAxis("TriggersL_2") > 0.5f) || Input.GetButtonDown("LB_2"))
+        if ((XCI.GetAxis(XboxAxis.LeftTrigger, 2) > 0.5f) || XCI.GetButtonDown(XboxButton.LeftBumper, 2))
         {
             Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
             playerThree.renderer.material.color = newColor;
             GlobalController.Instance.setPlayerState(3, PlayerState.Joined);
             playerThreeImage.SetActive(true);
         }
-        if ((Input.GetAxis("TriggersR_2") > 0.5f) || Input.GetButtonDown("RB_2"))
+        if ((XCI.GetAxis(XboxAxis.RightTrigger, 2) > 0.5f) || XCI.GetButtonDown(XboxButton.RightBumper, 2))
         {
             Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
             playerFour.renderer.material.color = newColor;
@@ -67,7 +68,7 @@ public class PlayerActiveScript : MonoBehaviour {
                     playerCount += 1;
                 }
             }
-			GlobalController.Instance.totalPlayerCount = playerCount;
+            GlobalController.Instance.totalPlayerCount = playerCount;
             if (playerCount >= 2)
             {
                 Application.LoadLevel("level1");

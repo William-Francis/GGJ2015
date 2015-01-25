@@ -170,4 +170,4 @@ public class PlayerController : MonoBehaviour
 		bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(x, y)*500));
 	}
 }
- 
+  
