@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
+	public AudioClip[] pigSnorts;
 	public AudioClip pigSnort1;
 	public AudioClip pigSnort2;
 	public AudioClip pigSnort3;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
 	void Awake()
     {
+	 
+
 		source = GetComponent<AudioSource>();
 
         scale = rigidbody2D.transform.localScale.x;
@@ -64,7 +67,27 @@ public class PlayerController : MonoBehaviour
 		}
 		if(coll.gameObject.GetComponent<PlayerController>()) // collision with player
 		{
-			source.PlayOneShot(pigSnort1,0.8f);
+			switch(Random.Range(0, 4))
+			{
+			case 1:
+				source.PlayOneShot(pigSnort1);
+				break;
+			case 2:
+				source.PlayOneShot(pigSnort2);
+				break;
+			case 3:
+				source.PlayOneShot(pigSnort3);
+				break;
+			case 4:
+				source.PlayOneShot(pigSnort4);
+				break;
+			default:
+				source.PlayOneShot(pigSnort1);
+				break;
+			}
+				 
+
+			 
 			//source.Play();
 			//audio.Play(pigSnort);
 			bounceList.Add(new Vector3(coll.gameObject.rigidbody2D.velocity.x*1.0f,coll.gameObject.rigidbody2D.velocity.y*1.0f,Time.time +1.0f));
