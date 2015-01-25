@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-	public float fireRate = 0.01f;
+	private float fireRate = 0.1f;
 	private float nextFire = 0.0f;
 
     public Transform aimIndicator;
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         aimIndicator.localRotation = Quaternion.Euler(0, 0, theta-90);
 
         // Shoot
-		if (shoot  && Time.time > nextFire)
+		if (shoot  && Time.time >= nextFire)
 		{
             nextFire = Time.time + fireRate;
             fireProjectile(aimX, aimY);

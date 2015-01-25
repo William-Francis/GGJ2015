@@ -13,8 +13,8 @@ public class GlobalController : MonoBehaviour {
 
 	public static List<int> deathList  = new List<int>();
 
-	public int levelIndex =1;
-	public int totalNumberOfLevels =2;
+	private int levelIndex =1;
+	private int totalNumberOfLevels =4;
 
     private static GlobalController _instance;
     public static GlobalController Instance
@@ -30,6 +30,8 @@ public class GlobalController : MonoBehaviour {
     public const int MAX_PLAYER_COUNT = 5;
     public PlayerState[] playerStates;
 	public int[] playerScore;
+
+	public int totalPlayerCount=0;
 
 
     void Awake()
@@ -62,7 +64,20 @@ public class GlobalController : MonoBehaviour {
             int result = 0;
             return result;
         }
+
     }
+	public int getNextLevel()
+	{
+		resetPlayers();
+		levelIndex++;
+		if(levelIndex > totalNumberOfLevels)
+		{
+			levelIndex=1;
+		}
+
+		return levelIndex;
+
+	}
 
 	public void resetPlayers()
 	{
@@ -124,7 +139,7 @@ public class GlobalController : MonoBehaviour {
 				 
 				playerScore[deathList[deathList.Count-1]]+=2; // second last to die
 				
-				if(playerCount>2)
+			if(totalPlayerCount>2)
 				{
 				playerScore[deathList[deathList.Count-2]]+=1; // third
 				}

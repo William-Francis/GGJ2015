@@ -1137,6 +1137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d4177ed6eae3945a839237fe1910f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelIndex: 0
+  totalNumberOfLevels: 2
   playerPrefab: {fileID: 103856, guid: d30751bf900b36b4093f22bfb48e4653, type: 2}
   playerStates: 
   playerScore: 
