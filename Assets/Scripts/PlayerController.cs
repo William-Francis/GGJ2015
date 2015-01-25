@@ -1,4 +1,3 @@
- 
 using UnityEngine;
 using System.Collections;
 
@@ -8,70 +7,101 @@ public class PlayerController : MonoBehaviour
 
     public float glideSpeed = 100;
     public float floatSpeed = 40;
+	public float weight = 0.1f;
      private float scale;
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-    void Awake()
+	public float fireRate = 0.01f;
+	private float nextFire = 0.0f;
+
+    public Transform aimIndicator;
+
+	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
-    }
+     }
 
     void kill()
     {
-        Destroy(gameObject);
+		GlobalController.Instance.playerStates[playerID] = PlayerState.Eliminated;
+		GlobalController.Instance.killPlayer(playerID);
+
+		Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.layer == 8)
+        if (coll.gameObject.layer == 8) // hazard like spike
         {
             kill();
         }
-    }
-
+		if (coll.gameObject.layer == 9) // bullet
+		{
+			weight+=1.0f;
+			coll.transform.parent = transform;
+			coll.rigidbody.isKinematic=true;
+			coll.collider.enabled=false;
+			rigidbody2D.rigidbody2D.mass+=1;
+			//add weight here
+			//kill();
+		}
+	}
+	
 	void FixedUpdate()
 	{
-		if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 direction = mousePosition-transform.position;
-            direction.z = 0;
-            direction.Normalize();
-			fireProjectile(direction);
-		}
-		
         // 3 - Retrieve axis information
         float moveX = 0;
         float moveY = 0;
+        float aimX = 0;
+        float aimY = 0;
+        bool shoot = false;
 
         switch (playerID)
         {
             case(0):
                 moveX = Input.GetAxis("Horizontal");
                 moveY = Input.GetAxis("Vertical");
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 direction = mousePosition-transform.position;
+			direction.z=0;
+			direction.Normalize();
+                aimX = direction.x;
+                aimY = direction.y;
+                shoot = Input.GetMouseButtonDown(0);
                 break;
 
-            case(1):
-                moveX = Input.GetAxis("DPad_XAxis_1");
-                moveY = Input.GetAxis("DPad_YAxis_1");
+            case(1): case(3):
+                moveX = Input.GetAxis("DPad_XAxis_"+playerID);
+                moveY = Input.GetAxis("DPad_YAxis_"+playerID);
+                aimX = Input.GetAxis("L_XAxis_"+playerID);
+                aimY = Input.GetAxis("L_YAxis_"+playerID);
+                shoot = ((Input.GetAxis("TriggersL_"+playerID) > 0.5f) || (Input.GetButtonDown("LB_"+playerID)));
                 break;
 
-            case(2):
-                moveX = Input.GetAxis("DPad_XAxis_2");
-                moveY = Input.GetAxis("DPad_YAxis_2");
+            case (2): case (4):
+                moveX = 0;
+                moveY = 0;
+                if (Input.GetButtonDown("X_"+playerID)) moveX -= 1.0f;
+                if (Input.GetButtonDown("B_"+playerID)) moveX += 1.0f;
+                if (Input.GetButtonDown("Y_"+playerID)) moveY += 1.0f;
+                if (Input.GetButtonDown("A_"+playerID)) moveY -= 1.0f;
+                aimX = Input.GetAxis("R_XAxis_"+playerID);
+                aimY = Input.GetAxis("R_YAxis_"+playerID);
+                shoot = ((Input.GetAxis("TriggersR_"+playerID) > 0.5f) || (Input.GetButtonDown("RB_"+playerID)));
                 break;
+        }
 
-            case(3):
-                moveX = Input.GetAxis("DPad_XAxis_3");
-                moveY = Input.GetAxis("DPad_YAxis_3");
-                break;
+        // Rotate aiming indicator
+        float theta = Mathf.Atan2(aimY, aimX) * Mathf.Rad2Deg;
+        aimIndicator.localRotation = Quaternion.Euler(0, 0, theta-90);
 
-            case (4):
-                moveX = Input.GetAxis("DPad_XAxis_4");
-                moveY = Input.GetAxis("DPad_YAxis_4");
-                break;
+        // Shoot
+		if (shoot  && Time.time > nextFire)
+		{
+            nextFire = Time.time + fireRate;
+            fireProjectile(aimX, aimY);
         }
 
         // 5 - Move the game object
@@ -80,11 +110,11 @@ public class PlayerController : MonoBehaviour
         float floatAcceleration = floatSpeed*scale;
         Vector2 newVelocity = rigidbody2D.velocity;
         newVelocity.x = glideSpeed*moveX;
-        newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f;
+		newVelocity.y = floatAcceleration*(scale-neutralScale) - 4f -weight;
         rigidbody2D.velocity = newVelocity;
 
         scale += 0.5f*sign(moveY)*Time.fixedDeltaTime;
-        scale = Mathf.Clamp(scale, 0.25f, 1.0f);
+        scale = Mathf.Clamp(scale, 0.25f, 1.25f);
 
         rigidbody2D.transform.localScale = new Vector3(scale, scale, scale);
 	}
@@ -99,14 +129,17 @@ public class PlayerController : MonoBehaviour
             return -1.0f;
     }
 
-	void fireProjectile(Vector3 direction)
+	void fireProjectile(float x, float y)
 	{
-        Vector3 spawnLoc = transform.position + direction*scale*1.3f;
+        Vector3 spawnLoc = transform.position;
+        spawnLoc.x += x*scale*1.9f;
+        spawnLoc.y += y*scale*1.9f;
 
         GameObject bulletInstance = (GameObject)Instantiate(bullet, spawnLoc, Quaternion.identity);
         // Should the bullet velocity be affected by the player's velocity?
-        //bulletInstance.rigidbody2D.velocity = rigidbody2D.velocity;
-        bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(direction.x, direction.y)*500));
+		Color newColor = new Color( Random.value, Random.value, Random.value, 1.0f );
+		bulletInstance.renderer.material.color = newColor;
+		bulletInstance.rigidbody2D.AddForce(rigidbody2D.position+(new Vector2(x, y)*500));
 	}
 }
  
