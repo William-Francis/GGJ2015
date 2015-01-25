@@ -16,12 +16,18 @@ public class PlayerController : MonoBehaviour
 	public float fireRate = 0.01f;
 	private float nextFire = 0.0f;
 
+    private float lastAimX;
+    private float lastAimY;
+
     public Transform aimIndicator;
 
 	void Awake()
     {
         scale = rigidbody2D.transform.localScale.x;
         //neutralScale = scale;
+
+        lastAimX = 0.0f;
+        lastAimY = 1.0f;
      }
 
     void kill()
@@ -62,15 +68,17 @@ public class PlayerController : MonoBehaviour
         switch (playerID)
         {
             case(0):
-                /*moveX = Input.GetAxis("Horizontal");
-                moveY = Input.GetAxis("Vertical");
+                if (Input.GetKey(KeyCode.A)) moveX -= 1.0f;
+                if (Input.GetKey(KeyCode.D)) moveX += 1.0f;
+                if (Input.GetKey(KeyCode.W)) moveY += 1.0f;
+                if (Input.GetKey(KeyCode.S)) moveY -= 1.0f;
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 direction = mousePosition-transform.position;
 			    direction.z=0;
 			    direction.Normalize();
                 aimX = direction.x;
                 aimY = direction.y;
-                shoot = Input.GetMouseButtonDown(0);*/
+                shoot = Input.GetMouseButtonDown(0);
                 break;
 
             case(1): case(3):
@@ -96,9 +104,20 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        if (aimX*aimX + aimY*aimY < 0.5f)
+        {
+            aimX = lastAimX;
+            aimY = lastAimY;
+        }
+        else
+        {
+            lastAimX = aimX;
+            lastAimY = aimY;
+        }
+
         // Rotate aiming indicator
         float theta = Mathf.Atan2(aimY, aimX) * Mathf.Rad2Deg;
-        aimIndicator.localRotation = Quaternion.Euler(0, 0, theta-90);
+        aimIndicator.rotation = Quaternion.Euler(0, 0, theta-90);
 
         // Shoot
 		if (shoot  && Time.time > nextFire)
