@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
-    private float fireRate = 0.1f;
+    private float fireRate = 0.5f;
     private float nextFire = 0.0f;
 
     private float lastAimX;
@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
         if (coll.gameObject.layer == 9) // bullet
         {
             weight+=1.0f;
+			scale += -0.05f;
             coll.transform.parent = transform;
             coll.rigidbody.isKinematic=true;
             coll.collider.enabled=false;
