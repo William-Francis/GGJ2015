@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float glideSpeed = 100;
     public float floatSpeed = 40;
 	public float weight = 0.1f;
-     private float scale;
+    private float scale;
 	public GameObject bullet;
     private float neutralScale = 0.5f; // Store the neutral scale to use as a zero-point for float acceleration
 
@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private float lastAimY;
 
     public Transform aimIndicator;
+
+    private bool isDead = false;
+    private float deadTime;
+    private Vector3 deadMoveDir;
 
 	void Awake()
     {
@@ -35,7 +39,28 @@ public class PlayerController : MonoBehaviour
 		GlobalController.Instance.playerStates[playerID] = PlayerState.Eliminated;
 		GlobalController.Instance.killPlayer(playerID);
 
-		Destroy(gameObject);
+        isDead = true;
+        deadTime = 0.0f;
+        deadMoveDir = new Vector3(-rigidbody2D.velocity.x, -rigidbody2D.velocity.y, 0);
+		Destroy(gameObject.transform.GetChild(0).gameObject); //Destroy the pointer
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        Destroy(gameObject.GetComponent<CircleCollider2D>());
+    }
+
+    void deadUpdate()
+    {
+        deadTime += Time.fixedDeltaTime;
+        transform.position += 50*deadMoveDir*Time.fixedDeltaTime;
+
+        deadMoveDir.x += Random.Range(-1.0f, 1.0f);
+        deadMoveDir.y += Random.Range(-1.0f, 1.0f);
+        deadMoveDir.Normalize();
+
+        Vector2 screenLoc = Camera.main.WorldToScreenPoint(transform.position);
+        if (screenLoc.x < -50 || screenLoc.y < -50 || screenLoc.x > Camera.main.pixelWidth+50 || screenLoc.y > Camera.main.pixelHeight+50)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -58,6 +83,12 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate()
 	{
+        if (isDead)
+        {
+            deadUpdate();
+            return;
+        }
+
         // 3 - Retrieve axis information
         float moveX = 0;
         float moveY = 0;
