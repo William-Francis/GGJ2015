@@ -1,0 +1,324 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\XInputDotNetPure.dll (this message is harmless)
+Loading C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\XInputDotNetPure.dll into Unity Child Domain
+- Completed reload, in  0.135 seconds
+desktop: 1600x900 40Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Will\Desktop\GGJ2015\Build folder\SwineFlew v2_Data\Managed\System.dll (this message is harmless)
+2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 1.805510 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1302.
+Total: 1.011545 ms (FindLiveObjects: 0.066095 ms CreateObjectMapping: 0.012315 ms MarkObjects: 0.201570 ms  DeleteObjects: 0.030789 ms)
+
+UnloadTime: 3.685327 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.698721 ms (FindLiveObjects: 0.011084 ms CreateObjectMapping: 0.013136 ms MarkObjects: 0.123158 ms  DeleteObjects: 0.102632 ms)
+
+UnloadTime: 0.330066 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1198.
+Total: 0.901113 ms (FindLiveObjects: 0.041874 ms CreateObjectMapping: 0.011494 ms MarkObjects: 0.154359 ms  DeleteObjects: 0.169138 ms)
+
+UnloadTime: 3.188585 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.580899 ms (FindLiveObjects: 0.008621 ms CreateObjectMapping: 0.009442 ms MarkObjects: 0.098116 ms  DeleteObjects: 0.020526 ms)
+
+UnloadTime: 0.306255 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1834.
+Total: 1.041103 ms (FindLiveObjects: 0.064042 ms CreateObjectMapping: 0.014368 ms MarkObjects: 0.229075 ms  DeleteObjects: 0.245496 ms)
+
+UnloadTime: 6.962998 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.624005 ms (FindLiveObjects: 0.009442 ms CreateObjectMapping: 0.011494 ms MarkObjects: 0.102632 ms  DeleteObjects: 0.020115 ms)
+
+Level 'level4' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 275)
+
+UnloadTime: 0.350182 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1302.
+Total: 1.172062 ms (FindLiveObjects: 0.047210 ms CreateObjectMapping: 0.014368 ms MarkObjects: 0.164211 ms  DeleteObjects: 0.219633 ms)
+
+UnloadTime: 5.459226 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 111 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.949555 ms (FindLiveObjects: 0.026273 ms CreateObjectMapping: 0.034073 ms MarkObjects: 0.123980 ms  DeleteObjects: 0.310771 ms)
+
+UnloadTime: 0.350592 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1198.
+Total: 0.890028 ms (FindLiveObjects: 0.041874 ms CreateObjectMapping: 0.014779 ms MarkObjects: 0.158464 ms  DeleteObjects: 0.216349 ms)
+
+UnloadTime: 3.512494 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.647405 ms (FindLiveObjects: 0.013958 ms CreateObjectMapping: 0.019705 ms MarkObjects: 0.137527 ms  DeleteObjects: 0.011084 ms)
+
+UnloadTime: 0.312413 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1834.
+Total: 1.016882 ms (FindLiveObjects: 0.059526 ms CreateObjectMapping: 0.018063 ms MarkObjects: 0.192128 ms  DeleteObjects: 0.224149 ms)
+
+UnloadTime: 7.498329 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.557089 ms (FindLiveObjects: 0.009031 ms CreateObjectMapping: 0.014779 ms MarkObjects: 0.101811 ms  DeleteObjects: 0.009852 ms)
+
+Level 'level4' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 275)
+
+UnloadTime: 0.286139 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1302.
+Total: 1.032893 ms (FindLiveObjects: 0.048032 ms CreateObjectMapping: 0.019294 ms MarkObjects: 0.172422 ms  DeleteObjects: 0.273823 ms)
+
+UnloadTime: 3.475135 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.602247 ms (FindLiveObjects: 0.009442 ms CreateObjectMapping: 0.016831 ms MarkObjects: 0.109200 ms  DeleteObjects: 0.041463 ms)
+
+UnloadTime: 0.301739 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1198.
+Total: 0.922871 ms (FindLiveObjects: 0.041463 ms CreateObjectMapping: 0.018473 ms MarkObjects: 0.160106 ms  DeleteObjects: 0.218812 ms)
+
+UnloadTime: 3.381124 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.564889 ms (FindLiveObjects: 0.009031 ms CreateObjectMapping: 0.016010 ms MarkObjects: 0.109200 ms  DeleteObjects: 0.010263 ms)
+
+UnloadTime: 0.301739 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.540667 ms (FindLiveObjects: 0.007800 ms CreateObjectMapping: 0.016421 ms MarkObjects: 0.101400 ms  DeleteObjects: 0.002873 ms)
+
+UnloadTime: 0.325960 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Total: 0.893723 ms (FindLiveObjects: 0.011494 ms CreateObjectMapping: 0.016831 ms MarkObjects: 0.135064 ms  DeleteObjects: 0.266433 ms)
+
+0
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.483193 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1300.
+Total: 0.843639 ms (FindLiveObjects: 0.044747 ms CreateObjectMapping: 0.064042 ms MarkObjects: 0.189254 ms  DeleteObjects: 0.038589 ms)
+
+UnloadTime: 3.381945 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 212.
+Total: 0.710216 ms (FindLiveObjects: 0.013136 ms CreateObjectMapping: 0.022989 ms MarkObjects: 0.114948 ms  DeleteObjects: 0.026273 ms)
+
+UnloadTime: 0.309539 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1832.
+Total: 0.928618 ms (FindLiveObjects: 0.061168 ms CreateObjectMapping: 0.021758 ms MarkObjects: 0.177348 ms  DeleteObjects: 0.197464 ms)
+
+UnloadTime: 7.684299 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.558320 ms (FindLiveObjects: 0.009852 ms CreateObjectMapping: 0.020526 ms MarkObjects: 0.107969 ms  DeleteObjects: 0.010263 ms)
+
+Level 'level4' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 275)
+
+UnloadTime: 0.355518 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1300.
+Total: 0.905629 ms (FindLiveObjects: 0.050084 ms CreateObjectMapping: 0.022989 ms MarkObjects: 0.181043 ms  DeleteObjects: 0.206907 ms)
+
+UnloadTime: 3.960382 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.647405 ms (FindLiveObjects: 0.013547 ms CreateObjectMapping: 0.032021 ms MarkObjects: 0.128495 ms  DeleteObjects: 0.022579 ms)
+
+UnloadTime: 0.345666 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1196.
+Total: 0.954892 ms (FindLiveObjects: 0.042695 ms CreateObjectMapping: 0.035716 ms MarkObjects: 0.191306 ms  DeleteObjects: 0.208138 ms)
+
+UnloadTime: 3.464462 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.553804 ms (FindLiveObjects: 0.009442 ms CreateObjectMapping: 0.020115 ms MarkObjects: 0.101400 ms  DeleteObjects: 0.009442 ms)
+
+UnloadTime: 0.424898 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1832.
+Total: 1.430286 ms (FindLiveObjects: 0.066505 ms CreateObjectMapping: 0.050495 ms MarkObjects: 0.319802 ms  DeleteObjects: 0.293118 ms)
+
+UnloadTime: 8.631803 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.571868 ms (FindLiveObjects: 0.009442 ms CreateObjectMapping: 0.023810 ms MarkObjects: 0.104685 ms  DeleteObjects: 0.011084 ms)
+
+Level 'level4' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 275)
+
+UnloadTime: 0.390003 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1300.
+Total: 0.971313 ms (FindLiveObjects: 0.045568 ms CreateObjectMapping: 0.033663 ms MarkObjects: 0.221275 ms  DeleteObjects: 0.213475 ms)
+
+UnloadTime: 3.579410 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.828449 ms (FindLiveObjects: 0.010673 ms CreateObjectMapping: 0.033663 ms MarkObjects: 0.128906 ms  DeleteObjects: 0.013136 ms)
+
+UnloadTime: 0.302971 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1196.
+Total: 1.336685 ms (FindLiveObjects: 0.071842 ms CreateObjectMapping: 0.055011 ms MarkObjects: 0.235644 ms  DeleteObjects: 0.292297 ms)
+
+UnloadTime: 3.376608 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.656026 ms (FindLiveObjects: 0.020526 ms CreateObjectMapping: 0.027916 ms MarkObjects: 0.117001 ms  DeleteObjects: 0.010673 ms)
+
+UnloadTime: 0.344845 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1832.
+Total: 1.078462 ms (FindLiveObjects: 0.060758 ms CreateObjectMapping: 0.042284 ms MarkObjects: 0.219222 ms  DeleteObjects: 0.224970 ms)
+
+UnloadTime: 7.770099 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.605121 ms (FindLiveObjects: 0.009031 ms CreateObjectMapping: 0.025452 ms MarkObjects: 0.101400 ms  DeleteObjects: 0.020526 ms)
+
+Level 'level4' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 275)
+
+UnloadTime: 0.316108 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1300.
+Total: 1.131831 ms (FindLiveObjects: 0.043516 ms CreateObjectMapping: 0.031610 ms MarkObjects: 0.158054 ms  DeleteObjects: 0.274233 ms)
+
+UnloadTime: 3.519473 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.582131 ms (FindLiveObjects: 0.009442 ms CreateObjectMapping: 0.027094 ms MarkObjects: 0.107148 ms  DeleteObjects: 0.009852 ms)
+
+UnloadTime: 0.330887 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1196.
+Total: 1.082567 ms (FindLiveObjects: 0.050084 ms CreateObjectMapping: 0.040642 ms MarkObjects: 0.195412 ms  DeleteObjects: 0.321034 ms)
+
+UnloadTime: 4.471081 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.650689 ms (FindLiveObjects: 0.009852 ms CreateObjectMapping: 0.031200 ms MarkObjects: 0.115769 ms  DeleteObjects: 0.074305 ms)
+
+UnloadTime: 0.382613 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1832.
+Total: 1.086672 ms (FindLiveObjects: 0.058705 ms CreateObjectMapping: 0.039000 ms MarkObjects: 0.197054 ms  DeleteObjects: 0.261918 ms)
+
+UnloadTime: 7.661309 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.620310 ms (FindLiveObjects: 0.009442 ms CreateObjectMapping: 0.028737 ms MarkObjects: 0.105506 ms  DeleteObjects: 0.036947 ms)
+
+Level 'level4' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 275)
+
+UnloadTime: 0.408477 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1300.
+Total: 1.042746 ms (FindLiveObjects: 0.046389 ms CreateObjectMapping: 0.042284 ms MarkObjects: 0.185970 ms  DeleteObjects: 0.259454 ms)
+
+UnloadTime: 3.955045 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.673679 ms (FindLiveObjects: 0.009852 ms CreateObjectMapping: 0.036126 ms MarkObjects: 0.101811 ms  DeleteObjects: 0.077179 ms)
+
+UnloadTime: 0.337455 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1196.
+Total: 1.006619 ms (FindLiveObjects: 0.041874 ms CreateObjectMapping: 0.013547 ms MarkObjects: 0.194180 ms  DeleteObjects: 0.265612 ms)
+
+UnloadTime: 3.468977 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.555857 ms (FindLiveObjects: 0.009031 ms CreateObjectMapping: 0.011494 ms MarkObjects: 0.108790 ms  DeleteObjects: 0.010263 ms)
+
